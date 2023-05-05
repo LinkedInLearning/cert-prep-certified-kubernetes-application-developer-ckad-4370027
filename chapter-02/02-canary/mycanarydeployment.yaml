@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mycanarydeployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mywebapp
+      version: canary
+  template:
+    metadata:
+      labels:
+        app: mywebapp
+        version: canary
+    spec:
+      containers:
+      - name: webapp
+        image: rdiazconcha/ckad-webapp-green:latest
+        ports:
+        - containerPort: 80
+

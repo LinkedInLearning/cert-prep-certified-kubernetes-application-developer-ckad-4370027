@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mydeployment
+  name: mydeployment
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: mydeployment
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: mydeployment
+    spec:
+      containers:
+      - image: rdiazconcha/ckad-webapp-blue:latest
+        name: webapp

@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: myconfigmappod
+  name: myconfigmappod
+spec:
+  containers:
+  - image: nginx
+    name: myconfigmappod
+    resources: {}
+    env:
+      - name: MY_EXAM_ENV
+        valueFrom:
+          configMapKeyRef:
+            name: myconfigmap
+            key: exam
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mystabledeployment
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: mywebapp
+      version: stable
+  template:
+    metadata:
+      labels:
+        app: mywebapp
+        version: stable
+    spec:
+      containers:
+      - name: webapp
+        image: rdiazconcha/ckad-webapp-blue:latest
+        ports:
+        - containerPort: 80

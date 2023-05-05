@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mygreendeployment
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: mywebapp
+      version: green
+  template:
+    metadata:
+      labels:
+        app: mywebapp
+        version: green
+    spec:
+      containers:
+      - name: webapp
+        image: rdiazconcha/ckad-webapp-green:latest
+        ports:
+        - containerPort: 80

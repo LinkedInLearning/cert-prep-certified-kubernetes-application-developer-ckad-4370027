@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myingress
+spec:
+  rules:
+  - host: wisdompetmed.com
+    http:
+      paths:
+      - path: /pets
+        pathType: Prefix
+        backend:
+          service:
+            name: myservice
+            port:
+              number: 80

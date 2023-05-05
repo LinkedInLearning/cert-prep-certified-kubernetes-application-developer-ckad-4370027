@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: myrollingupdate
+  name: myrollingupdate
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: myrollingupdate
+  strategy:
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 10%
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: myrollingupdate
+    spec:
+      containers:
+      - image: redis:6.0-alpine
+        name: redis
+        resources: {}

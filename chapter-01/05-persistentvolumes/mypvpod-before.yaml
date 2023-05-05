@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: mypvpod
+  name: mypvpod
+spec:
+  containers:
+  - image: busybox
+    name: mypvpod
+    command: ["sh", "-c", "echo 'CKAD' > /data/file.txt && sleep 300"]
+  restartPolicy: OnFailure

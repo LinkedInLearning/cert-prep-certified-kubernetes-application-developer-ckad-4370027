@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: mytokenpod
+  name: mytokenpod
+spec:
+  serviceAccountName: mysa
+  containers:
+  - image: nginx
+    name: mytokenpod
+    resources: {}
+    volumeMounts:
+    - name: myvolume
+      mountPath: /secrets
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+  volumes:
+  - name: myvolume
+    projected:
+      sources:
+      - serviceAccountToken:
+          path: token
+status: {}

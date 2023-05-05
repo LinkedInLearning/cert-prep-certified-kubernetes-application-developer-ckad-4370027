@@ -1,0 +1,7 @@
+apiVersion: wisdompetmed.com/v1
+kind: Pet
+metadata:
+  name: mypet
+spec:
+  breed: Beagle
+  name: Gianni

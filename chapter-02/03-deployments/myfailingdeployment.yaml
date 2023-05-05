@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: myfailingdeployment
+  name: myfailingdeployment
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: myfailingdeployment
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: myfailingdeployment
+    spec:
+      containers:
+      - image: busybo
+        name: busybo
+        resources: {}
+status: {}

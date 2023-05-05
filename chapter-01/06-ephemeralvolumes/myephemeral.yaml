@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myephemeral
+spec:
+  containers:
+  - name: busybox
+    image: busybox
+    command: ["/bin/sh", "-c", "while true; do echo 'Hello, CKAD!' >> /data/message.txt; sleep 5; done"]
+    volumeMounts:
+    - name: myvolume
+      mountPath: /data
+  volumes:
+  - name: myvolume
+    emptyDir: {}

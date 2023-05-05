@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  creationTimestamp: null
+  name: mycronjob
+spec:
+  jobTemplate:
+    metadata:
+      creationTimestamp: null
+      name: mycronjob
+    spec:
+      ttlSecondsAfterFinished: 10
+      completions: 2
+      template:
+        metadata:
+          creationTimestamp: null
+        spec:
+          containers:
+          - image: busybox
+            name: mycronjob
+            command: ["sh","-c", "echo 'CKAD'"]
+            resources: {}
+          restartPolicy: OnFailure
+  schedule: '*/2 * * * *'
+status: {}
